@@ -3,6 +3,10 @@
 import wx
 from DataViewModel5 import *
 import find_ID_info_pandas_9
+import wx.lib.inspection
+import wx.lib.mixins.inspection
+import sys, os
+
 files_name_text_1= []
 files_name_text_2= []
 files_name_text_3= []
@@ -432,9 +436,13 @@ class TestPanel(wx.Panel):
 
 #----------------------------------------------------------------------
 
-def runTest(frame, nb, log):
-    win = TestPanel(nb, log)
-    return win
+if __name__ == '__main__':
+
+    app = wx.App()
+    frm = wx.Frame(None, title="DataViewModel sample", size=(700,500))
+    pnl = TestPanel(frm, sys.stdout)
+    frm.Show()
+    app.MainLoop()
 
 #----------------------------------------------------------------------
 
@@ -468,10 +476,5 @@ processor. Let us describe what each of them should do.
 </body>
 </html>
 """
-
-
-if __name__ == '__main__':
-    import sys,os
-    import run
-    run.main(['', os.path.basename(sys.argv[0])] + sys.argv[1:])
+#import wx
 
